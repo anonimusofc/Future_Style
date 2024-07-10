@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Style</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #121212;
             color: #ffffff;
             margin: 0;
@@ -18,14 +19,15 @@
             overflow: hidden;
         }
         header {
-            background: #333;
+            background: linear-gradient(90deg, #1a1a1a, #333333);
             color: #fff;
             padding-top: 30px;
             min-height: 70px;
             border-bottom: #77ab59 3px solid;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         header a {
-            color: #fff;
+            color: #77ab59;
             text-decoration: none;
             text-transform: uppercase;
             font-size: 16px;
@@ -39,15 +41,23 @@
             margin: 0;
             font-size: 48px;
             line-height: 1.5;
+            background: linear-gradient(90deg, #77ab59, #c2e59c);
+            -webkit-background-clip: text;
+            color: transparent;
         }
-        #auth-button {
-            background: #77ab59;
+        #auth-button, #register-button, .initial-screen button {
+            background: linear-gradient(90deg, #77ab59, #c2e59c);
             color: #fff;
             border: 0;
             padding: 10px 20px;
             cursor: pointer;
+            border-radius: 25px;
+            transition: background 0.3s ease;
         }
-        .admin-panel {
+        #auth-button:hover, #register-button:hover, .initial-screen button:hover {
+            background: linear-gradient(90deg, #c2e59c, #77ab59);
+        }
+        .admin-panel, .initial-screen, .register-form {
             display: none;
             margin-top: 20px;
         }
@@ -57,6 +67,7 @@
             text-align: center;
             padding: 10px;
             margin-top: 20px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
         }
         .customize-panel {
             display: none;
@@ -65,47 +76,57 @@
         .error-message {
             color: red;
         }
-
-        /* Estilos para tema escuro */
-        body.dark-mode {
-            background-color: #1a1a1a;
-            color: #ffffff;
+        .initial-screen {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #1a1a1a, #333333);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
         }
-        .container.dark-mode {
-            border: 1px solid #777;
-        }
-        header.dark-mode {
-            background: #000;
-            color: #fff;
-            border-bottom: #77ab59 3px solid;
-        }
-        #auth-button.dark-mode {
+        .initial-screen button {
+            margin-top: 20px;
             background: #77ab59;
             color: #fff;
+            border: 0;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: background 0.3s ease;
         }
-        .admin-panel.dark-mode {
-            background-color: #333;
-            color: #fff;
+        .initial-screen button:hover {
+            background: #c2e59c;
         }
-        .footer.dark-mode {
-            background: #000;
-            color: #fff;
-        }
-        .customize-panel.dark-mode {
-            background-color: #333;
-            color: #fff;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
     <script>
         const allowedEmails = ['thenoth23@gmail.com', 'theanonimusofc@gmail.com'];
         let attempts = 0;
         const maxAttempts = 5;
+        let registeredEmails = ['thenoth23@gmail.com', 'theanonimusofc@gmail.com'];
+
+        function showLoginForm() {
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        }
+
+        function showRegisterForm() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+        }
 
         function login() {
             const email = document.getElementById('email').value;
             if (allowedEmails.includes(email)) {
                 document.getElementById('login-form').style.display = 'none';
-                document.getElementById('welcome-message').style.display = 'block';
+                document.getElementById('initial-screen').style.display = 'block';
                 if (email === 'thenoth23@gmail.com' || email === 'theanonimusofc@gmail.com') {
                     document.getElementById('admin-panel').style.display = 'block';
                 }
@@ -117,6 +138,19 @@
                 } else {
                     alert('Email não autorizado. Solicite permissão.');
                 }
+            }
+        }
+
+        function register() {
+            const email = document.getElementById('register-email').value;
+            if (registeredEmails.includes(email)) {
+                alert('Email já registrado. Por favor, faça login.');
+                showLoginForm();
+            } else {
+                registeredEmails.push(email);
+                allowedEmails.push(email);
+                alert('Registro bem-sucedido! Você agora pode fazer login.');
+                showLoginForm();
             }
         }
 
@@ -136,37 +170,56 @@
         function saveCustomization() {
             alert('Customizações salvas com sucesso!');
         }
+
+        function openAdminPanel() {
+            document.getElementById('admin-panel').style.display = 'block';
+        }
+
+        function logout() {
+            document.getElementById('initial-screen').style.display = 'none';
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        }
     </script>
 </head>
-<body class="dark-mode">
-    <header class="dark-mode">
-        <div class="container dark-mode">
+<body>
+    <header>
+        <div class="container">
             <div class="main-header">
                 <h1>Future Style</h1>
             </div>
         </div>
     </header>
-    <div class="container dark-mode">
+    <div class="container">
         <div id="login-form">
             <h2>Login</h2>
             <input type="email" id="email" placeholder="Digite seu email" required>
-            <button id="auth-button" class="dark-mode" onclick="login()">Entrar</button>
+            <button id="auth-button" onclick="login()">Entrar</button>
             <p id="error-message" class="error-message"></p>
+            <p>Não tem uma conta? <a href="#" onclick="showRegisterForm()">Crie uma conta</a></p>
         </div>
-        <div id="welcome-message" style="display: none;">
-            <h2>Bem-vindo ao Future Style</h2>
+        <div id="register-form" class="register-form">
+            <h2>Registrar</h2>
+            <input type="email" id="register-email" placeholder="Digite seu email" required>
+            <button id="register-button" onclick="register()">Registrar</button>
+            <p>Já tem uma conta? <a href="#" onclick="showLoginForm()">Acesse sua conta</a></p>
         </div>
-        <div id="admin-panel" class="admin-panel dark-mode">
-            <h3>Painel de Administração</h3>
-            <button onclick="customizeSite()">Customizar Site</button>
-            <button onclick="toggleCustomizePanel()">Mostrar/Ocultar Painel de Customização</button>
-            <div id="customize-panel" class="customize-panel dark-mode">
-                <h4>Painel de Customização</h4>
-                <button onclick="saveCustomization()">Salvar Customização</button>
+        <div id="initial-screen" class="initial-screen">
+            <h2>Página Inicial</h2>
+            <button onclick="openAdminPanel()">Painel de Administração</button>
+            <button onclick="logout()">Sair</button>
+            <div id="admin-panel" class="admin-panel">
+                <h3>Painel de Administração</h3>
+                <button onclick="customizeSite()">Customizar Site</button>
+                <button onclick="toggleCustomizePanel()">Mostrar/Ocultar Painel de Customização</button>
+                <div id="customize-panel" class="customize-panel">
+                    <h4>Painel de Customização</h4>
+                    <button onclick="saveCustomization()">Salvar Customização</button>
+                </div>
             </div>
         </div>
     </div>
-    <div class="footer dark-mode">
+    <div class="footer">
         <p>&copy; 2024 Future Style. Todos os direitos reservados.</p>
     </div>
 </body>
