@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Style</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .hidden {
+            display: none;
+        }
+        .dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+        .modo-leitura {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Future Style</h1>
+    <div id="loginForm" class="container">
+        <input type="email" id="email" placeholder="Digite seu email" required>
+        <button id="submitBtn" class="btn" onclick="entrar()">Entrar</button>
+    </div>
+    <div id="authorizationRequest" class="hidden">
+        Solicitação de autorização enviada.
+    </div>
+    <div id="verificationForm" class="hidden">
+        <input type="text" id="verificationCode" placeholder="Digite o código de verificação" required>
+        <button id="verifyBtn" class="btn" onclick="verificarCodigo()">Verificar</button>
+    </div>
+    <div id="mainContent" class="hidden">
+        <div class="main-content">
+            <h2>Bem-vindo ao Future Style!</h2>
+            <p>Seu conteúdo exclusivo.</p>
+            <div id="log" class="container"></div>
+        </div>
+        <button id="panelBtn" class="panel-btn hidden" onclick="mostrarPainelControle()">Painel de Controle</button>
+        <div id="panel" class="panel">
+            <!-- Opções do Painel de Controle serão adicionadas dinamicamente -->
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script>
+        // Simulação de solicitação de autorização
+        function entrar() {
+            var email = document.getElementById("email").value;
+            
+            if (email === "thenoth23@gmail.com" || email === "theanonimusofc@gmail.com") {
+                // Email autorizado, mostrar conteúdo principal
+                document.getElementById("loginForm").classList.add("hidden");
+                document.getElementById("mainContent").classList.remove("hidden");
+                document.getElementById("panelBtn").classList.remove("hidden");
+            } else {
+                // Email não autorizado, simular envio de solicitação de autorização
+                document.getElementById("loginForm").classList.add("hidden");
+                document.getElementById("authorizationRequest").classList.remove("hidden");
+                enviarNotificacao(email);
+            }
+        }
+
+        // Simulação de envio de notificação ao administrador
+        function enviarNotificacao(email) {
+            // Aqui você poderia usar uma API de notificação ou enviar um email ao administrador
+            var mensagem = "Solicitação de autorização para o email: " + email;
+            var confirmacao = confirm(mensagem + "\nAceitar ou Recusar?");
+            if (confirmacao) {
+                alert("Solicitação aceita!");
+                // Lógica para aceitar a solicitação
+            } else {
+                alert("Solicitação recusada.");
+                // Lógica para recusar a solicitação
+            }
+        }
+
+        // Função para verificar código de autorização
+        function verificarCodigo() {
+            var codigo = document.getElementById("verificationCode").value;
+            // Lógica para verificar o código de autorização (exemplo fictício)
+            if (codigo === "123456") {
+                // Código correto, permitir acesso ao conteúdo principal
+                document.getElementById("verificationForm").classList.add("hidden");
+                document.getElementById("mainContent").classList.remove("hidden");
+                document.getElementById("panelBtn").classList.remove("hidden");
+            } else {
+                alert("Código incorreto. Tente novamente.");
+            }
+        }
+    </script>
+</body>
+</html>
