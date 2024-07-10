@@ -5,222 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Style</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #121212;
             color: #ffffff;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://img1.picmix.com/output/pic/normal/4/8/7/8/4068784_5af19.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
         }
         .container {
             width: 90%;
             margin: auto;
             overflow: hidden;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
         }
         header {
-            background: linear-gradient(90deg, #1a1a1a, #333333);
+            background: #333;
             color: #fff;
             padding-top: 30px;
             min-height: 70px;
             border-bottom: #77ab59 3px solid;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        header a {
-            color: #77ab59;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        .main-header {
             text-align: center;
-            text-transform: uppercase;
-            font-size: 24px;
         }
-        .main-header h1 {
+        header h1 {
             margin: 0;
-            font-size: 48px;
-            line-height: 1.5;
-            background: linear-gradient(90deg, #77ab59, #c2e59c);
-            -webkit-background-clip: text;
-            color: transparent;
+            font-size: 36px;
         }
-        #auth-button, #register-button, .initial-screen button {
-            background: linear-gradient(90deg, #77ab59, #c2e59c);
-            color: #fff;
-            border: 0;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 25px;
-            transition: background 0.3s ease;
-        }
-        #auth-button:hover, #register-button:hover, .initial-screen button:hover {
-            background: linear-gradient(90deg, #c2e59c, #77ab59);
-        }
-        .admin-panel, .initial-screen, .register-form {
-            display: none;
-            margin-top: 20px;
-        }
-        .footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            margin-top: 20px;
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .customize-panel {
-            display: none;
-            margin-top: 20px;
-        }
-        .error-message {
-            color: red;
-        }
-        .initial-screen {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(90deg, #1a1a1a, #333333);
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1s ease-in-out;
-        }
-        .initial-screen button {
-            margin-top: 20px;
+        #auth-button {
             background: #77ab59;
             color: #fff;
             border: 0;
             padding: 10px 20px;
             cursor: pointer;
-            border-radius: 25px;
-            transition: background 0.3s ease;
         }
-        .initial-screen button:hover {
-            background: #c2e59c;
+        .login-form {
+            margin-top: 20px;
+            text-align: center;
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        .login-form input[type="email"] {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .login-form button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-form button:hover {
+            background-color: #555;
+        }
+        .error-message {
+            color: red;
         }
     </style>
+</head>
+<body>
+    <header>
+        <h1>Future Style</h1>
+    </header>
+    <div class="container">
+        <div class="login-form">
+            <h2>Login ou Crie uma Conta</h2>
+            <input type="email" id="email" placeholder="Digite seu email" required>
+            <button id="auth-button" onclick="loginOrCreate()">Entrar / Criar Conta</button>
+            <p id="error-message" class="error-message"></p>
+        </div>
+    </div>
+
     <script>
         const allowedEmails = ['thenoth23@gmail.com', 'theanonimusofc@gmail.com'];
         let attempts = 0;
         const maxAttempts = 5;
-        let registeredEmails = ['thenoth23@gmail.com', 'theanonimusofc@gmail.com'];
 
-        function showLoginForm() {
-            document.getElementById('register-form').style.display = 'none';
-            document.getElementById('login-form').style.display = 'block';
-        }
-
-        function showRegisterForm() {
-            document.getElementById('login-form').style.display = 'none';
-            document.getElementById('register-form').style.display = 'block';
-        }
-
-        function login() {
+        function loginOrCreate() {
             const email = document.getElementById('email').value;
             if (allowedEmails.includes(email)) {
-                document.getElementById('login-form').style.display = 'none';
-                document.getElementById('initial-screen').style.display = 'block';
-                if (email === 'thenoth23@gmail.com' || email === 'theanonimusofc@gmail.com') {
-                    document.getElementById('admin-panel').style.display = 'block';
-                }
+                // Simula o login com sucesso
+                document.getElementById('error-message').textContent = '';
+                window.location.href = 'dashboard.html'; // Redireciona para o painel principal
             } else {
                 attempts++;
                 if (attempts >= maxAttempts) {
                     alert('Você excedeu o número máximo de tentativas. Tente novamente em 24 horas.');
-                    document.getElementById('login-form').style.display = 'none';
+                    document.getElementById('email').setAttribute('disabled', true); // Desativa o campo de email após muitas tentativas
+                    document.getElementById('auth-button').setAttribute('disabled', true); // Desativa o botão após muitas tentativas
                 } else {
                     alert('Email não autorizado. Solicite permissão.');
                 }
             }
         }
-
-        function register() {
-            const email = document.getElementById('register-email').value;
-            if (registeredEmails.includes(email)) {
-                alert('Email já registrado. Por favor, faça login.');
-                showLoginForm();
-            } else {
-                registeredEmails.push(email);
-                allowedEmails.push(email);
-                alert('Registro bem-sucedido! Você agora pode fazer login.');
-                showLoginForm();
-            }
-        }
-
-        function customizeSite() {
-            const newTitle = prompt('Digite o novo título do site:');
-            if (newTitle) {
-                document.title = newTitle;
-                document.querySelector('.main-header h1').textContent = newTitle;
-            }
-        }
-
-        function toggleCustomizePanel() {
-            const panel = document.getElementById('customize-panel');
-            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function saveCustomization() {
-            alert('Customizações salvas com sucesso!');
-        }
-
-        function openAdminPanel() {
-            document.getElementById('admin-panel').style.display = 'block';
-        }
-
-        function logout() {
-            document.getElementById('initial-screen').style.display = 'none';
-            document.getElementById('admin-panel').style.display = 'none';
-            document.getElementById('login-form').style.display = 'block';
-        }
     </script>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="main-header">
-                <h1>Future Style</h1>
-            </div>
-        </div>
-    </header>
-    <div class="container">
-        <div id="login-form">
-            <h2>Login</h2>
-            <input type="email" id="email" placeholder="Digite seu email" required>
-            <button id="auth-button" onclick="login()">Entrar</button>
-            <p id="error-message" class="error-message"></p>
-            <p>Não tem uma conta? <a href="#" onclick="showRegisterForm()">Crie uma conta</a></p>
-        </div>
-        <div id="register-form" class="register-form">
-            <h2>Registrar</h2>
-            <input type="email" id="register-email" placeholder="Digite seu email" required>
-            <button id="register-button" onclick="register()">Registrar</button>
-            <p>Já tem uma conta? <a href="#" onclick="showLoginForm()">Acesse sua conta</a></p>
-        </div>
-        <div id="initial-screen" class="initial-screen">
-            <h2>Página Inicial</h2>
-            <button onclick="openAdminPanel()">Painel de Administração</button>
-            <button onclick="logout()">Sair</button>
-            <div id="admin-panel" class="admin-panel">
-                <h3>Painel de Administração</h3>
-                <button onclick="customizeSite()">Customizar Site</button>
-                <button onclick="toggleCustomizePanel()">Mostrar/Ocultar Painel de Customização</button>
-                <div id="customize-panel" class="customize-panel">
-                    <h4>Painel de Customização</h4>
-                    <button onclick="saveCustomization()">Salvar Customização</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer">
-        <p>&copy; 2024 Future Style. Todos os direitos reservados.</p>
-    </div>
 </body>
 </html>
