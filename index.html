@@ -5,117 +5,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Style</title>
     <style>
-        /* Estilos básicos */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
             margin: 0;
             padding: 0;
         }
         .container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
         }
-        .btn {
-            background-color: #007bff;
+        header {
+            background: #333;
             color: #fff;
-            border: none;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77ab59 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        .main-header {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 24px;
+        }
+        .main-header h1 {
+            margin: 0;
+            font-size: 48px;
+            line-height: 1.5;
+        }
+        #auth-button {
+            background: #77ab59;
+            color: #fff;
+            border: 0;
             padding: 10px 20px;
             cursor: pointer;
-            border-radius: 4px;
         }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .hidden {
+        .admin-panel {
             display: none;
+            margin-top: 20px;
         }
-        .dark-mode {
+        .footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .customize-panel {
+            display: none;
+            margin-top: 20px;
+        }
+        .error-message {
+            color: red;
+        }
+
+        /* Estilos para tema escuro */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .container.dark-mode {
+            border: 1px solid #777;
+        }
+        header.dark-mode {
+            background: #000;
+            color: #fff;
+            border-bottom: #77ab59 3px solid;
+        }
+        #auth-button.dark-mode {
+            background: #77ab59;
+            color: #fff;
+        }
+        .admin-panel.dark-mode {
             background-color: #333;
             color: #fff;
         }
-        .modo-leitura {
-            font-size: 18px;
-            line-height: 1.6;
+        .footer.dark-mode {
+            background: #000;
+            color: #fff;
+        }
+        .customize-panel.dark-mode {
+            background-color: #333;
+            color: #fff;
         }
     </style>
-</head>
-<body>
-    <h1>Future Style</h1>
-    <div id="loginForm" class="container">
-        <input type="email" id="email" placeholder="Digite seu email" required>
-        <button id="submitBtn" class="btn" onclick="entrar()">Entrar</button>
-    </div>
-    <div id="authorizationRequest" class="hidden">
-        Solicitação de autorização enviada.
-    </div>
-    <div id="verificationForm" class="hidden">
-        <input type="text" id="verificationCode" placeholder="Digite o código de verificação" required>
-        <button id="verifyBtn" class="btn" onclick="verificarCodigo()">Verificar</button>
-    </div>
-    <div id="mainContent" class="hidden">
-        <div class="main-content">
-            <h2>Bem-vindo ao Future Style!</h2>
-            <p>Seu conteúdo exclusivo.</p>
-            <div id="log" class="container"></div>
-        </div>
-        <button id="panelBtn" class="panel-btn hidden" onclick="mostrarPainelControle()">Painel de Controle</button>
-        <div id="panel" class="panel">
-            <!-- Opções do Painel de Controle serão adicionadas dinamicamente -->
-        </div>
-    </div>
-
-    <!-- Scripts JavaScript -->
     <script>
-        // Simulação de solicitação de autorização
-        function entrar() {
-            var email = document.getElementById("email").value;
-            
-            if (email === "thenoth23@gmail.com" || email === "theanonimusofc@gmail.com") {
-                // Email autorizado, mostrar conteúdo principal
-                document.getElementById("loginForm").classList.add("hidden");
-                document.getElementById("mainContent").classList.remove("hidden");
-                document.getElementById("panelBtn").classList.remove("hidden");
+        const allowedEmails = ['thenoth23@gmail.com', 'theanonimusofc@gmail.com'];
+        let attempts = 0;
+        const maxAttempts = 5;
+
+        function login() {
+            const email = document.getElementById('email').value;
+            if (allowedEmails.includes(email)) {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('welcome-message').style.display = 'block';
+                if (email === 'thenoth23@gmail.com' || email === 'theanonimusofc@gmail.com') {
+                    document.getElementById('admin-panel').style.display = 'block';
+                }
             } else {
-                // Email não autorizado, simular envio de solicitação de autorização
-                document.getElementById("loginForm").classList.add("hidden");
-                document.getElementById("authorizationRequest").classList.remove("hidden");
-                enviarNotificacao(email);
+                attempts++;
+                if (attempts >= maxAttempts) {
+                    alert('Você excedeu o número máximo de tentativas. Tente novamente em 24 horas.');
+                    document.getElementById('login-form').style.display = 'none';
+                } else {
+                    alert('Email não autorizado. Solicite permissão.');
+                }
             }
         }
 
-        // Simulação de envio de notificação ao administrador
-        function enviarNotificacao(email) {
-            // Aqui você poderia usar uma API de notificação ou enviar um email ao administrador
-            var mensagem = "Solicitação de autorização para o email: " + email;
-            var confirmacao = confirm(mensagem + "\nAceitar ou Recusar?");
-            if (confirmacao) {
-                alert("Solicitação aceita!");
-                // Lógica para aceitar a solicitação
-            } else {
-                alert("Solicitação recusada.");
-                // Lógica para recusar a solicitação
+        function customizeSite() {
+            const newTitle = prompt('Digite o novo título do site:');
+            if (newTitle) {
+                document.title = newTitle;
+                document.querySelector('.main-header h1').textContent = newTitle;
             }
         }
 
-        // Função para verificar código de autorização
-        function verificarCodigo() {
-            var codigo = document.getElementById("verificationCode").value;
-            // Lógica para verificar o código de autorização (exemplo fictício)
-            if (codigo === "123456") {
-                // Código correto, permitir acesso ao conteúdo principal
-                document.getElementById("verificationForm").classList.add("hidden");
-                document.getElementById("mainContent").classList.remove("hidden");
-                document.getElementById("panelBtn").classList.remove("hidden");
-            } else {
-                alert("Código incorreto. Tente novamente.");
-            }
+        function toggleCustomizePanel() {
+            const panel = document.getElementById('customize-panel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function saveCustomization() {
+            alert('Customizações salvas com sucesso!');
         }
     </script>
+</head>
+<body class="dark-mode">
+    <header class="dark-mode">
+        <div class="container dark-mode">
+            <div class="main-header">
+                <h1>Future Style</h1>
+            </div>
+        </div>
+    </header>
+    <div class="container dark-mode">
+        <div id="login-form">
+            <h2>Login</h2>
+            <input type="email" id="email" placeholder="Digite seu email" required>
+            <button id="auth-button" class="dark-mode" onclick="login()">Entrar</button>
+            <p id="error-message" class="error-message"></p>
+        </div>
+        <div id="welcome-message" style="display: none;">
+            <h2>Bem-vindo ao Future Style</h2>
+        </div>
+        <div id="admin-panel" class="admin-panel dark-mode">
+            <h3>Painel de Administração</h3>
+            <button onclick="customizeSite()">Customizar Site</button>
+            <button onclick="toggleCustomizePanel()">Mostrar/Ocultar Painel de Customização</button>
+            <div id="customize-panel" class="customize-panel dark-mode">
+                <h4>Painel de Customização</h4>
+                <button onclick="saveCustomization()">Salvar Customização</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer dark-mode">
+        <p>&copy; 2024 Future Style. Todos os direitos reservados.</p>
+    </div>
 </body>
 </html>
