@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar - Future Style</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .register-container {
+            text-align: center;
+            max-width: 400px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        button {
+            background-color: #77ab59;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5c8347;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Registrar - Future Style</h2>
+        <input type="email" id="email" placeholder="Digite seu email" required>
+        <input type="password" id="password" placeholder="Digite sua senha" required>
+        <input type="password" id="confirm-password" placeholder="Confirme sua senha" required>
+        <button onclick="register()">Registrar</button>
+        <p id="error-message" class="error-message"></p>
+    </div>
+
+    <script>
+        function register() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                document.getElementById('error-message').textContent = 'As senhas não correspondem.';
+                return;
+            }
+
+            // Aqui você pode adicionar lógica para registrar o usuário
+            // Exemplo básico: redirecionar para a página de login após o registro
+            window.location.href = 'index.html'; // Redireciona para a página de login após o registro
+        }
+    </script>
+</body>
+</html>
