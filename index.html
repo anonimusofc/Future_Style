@@ -11,41 +11,51 @@
             color: #ffffff;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://i.pinimg.com/originals/60/67/10/6067102423d691b68e990caa7652cf56.gif');
+            background-size: cover;
+            background-position: center;
         }
         .container {
             width: 90%;
-            margin: auto;
-            overflow: hidden;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
-        header {
-            background: #333;
-            color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #77ab59 3px solid;
-        }
-        header a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        .main-header {
+        h2 {
             text-align: center;
-            text-transform: uppercase;
-            font-size: 24px;
+            margin-bottom: 20px;
         }
-        .main-header h1 {
-            margin: 0;
-            font-size: 48px;
-            line-height: 1.5;
+        .form-container {
+            text-align: center;
         }
-        #auth-button {
-            background: #77ab59;
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #77ab59;
             color: #fff;
-            border: 0;
-            padding: 10px 20px;
             cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .form-container button:hover {
+            background-color: #68a048;
+        }
+        .error-message {
+            color: red;
         }
         .admin-panel {
             display: none;
@@ -62,33 +72,17 @@
             display: none;
             margin-top: 20px;
         }
-        .error-message {
-            color: red;
-        }
-        .login-container {
-            text-align: center;
-            margin-top: 50px;
-        }
-        .login-container h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
     </style>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
         const allowedEmails = ['thenoth23@gmail.com', 'theanonimusofc@gmail.com'];
+        const allowedPasswords = ['anonimus12349', 'anonimus12349'];
         let attempts = 0;
         const maxAttempts = 5;
-        const users = {
-            'thenoth23@gmail.com': 'senha123',
-            'theanonimusofc@gmail.com': 'senha321'
-        };
 
         function login() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
-            if (allowedEmails.includes(email) && users[email] === password) {
+            if (allowedEmails.includes(email) && allowedPasswords.includes(password)) {
                 document.getElementById('login-form').style.display = 'none';
                 document.getElementById('welcome-message').style.display = 'block';
                 if (email === 'thenoth23@gmail.com' || email === 'theanonimusofc@gmail.com') {
@@ -103,29 +97,6 @@
                     alert('Desculpe, esse e-mail não foi encontrado.');
                 }
             }
-        }
-
-        function createUserAccount() {
-            const email = document.getElementById('email').value;
-            const verificationCode = generateVerificationCode();
-            sendVerificationEmail(email, verificationCode);
-            return false;
-        }
-
-        function generateVerificationCode() {
-            return Math.floor(100000 + Math.random() * 900000);
-        }
-
-        function sendVerificationEmail(email, code) {
-            Email.send({
-                SecureToken: "SeuTokenAqui",
-                To: email,
-                From: "theanonimusofc@gmail.com",
-                Subject: "Verificação de Conta - Future Style",
-                Body: `Olá,<br><br>Obrigado por se registrar no Future Style. Para concluir o processo de criação de conta, por favor, insira o código de verificação abaixo no site:<br><br><strong>${code}</strong><br><br>Se você não solicitou este código, por favor ignore este e-mail.<br><br>Atenciosamente,<br>Equipe Future Style`
-            }).then(
-                message => alert("E-mail de verificação enviado com sucesso!")
-            );
         }
 
         function customizeSite() {
@@ -144,24 +115,51 @@
         function saveCustomization() {
             alert('Customizações salvas com sucesso!');
         }
+
+        function showRegisterForm() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+        }
+
+        function showLoginForm() {
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        }
+
+        function createAccount() {
+            const newEmail = document.getElementById('new-email').value;
+            const newPassword = document.getElementById('new-password').value;
+            const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+            alert('Código de verificação enviado para ' + newEmail + ': ' + verificationCode);
+
+            const enteredCode = prompt('Digite o código de verificação enviado ao seu e-mail:');
+            if (enteredCode === verificationCode) {
+                allowedEmails.push(newEmail);
+                allowedPasswords.push(newPassword);
+                alert('Conta criada com sucesso!');
+                showLoginForm();
+            } else {
+                alert('Código de verificação incorreto.');
+            }
+        }
     </script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="main-header">
-                <h1>Future Style</h1>
-            </div>
-        </div>
-    </header>
     <div class="container">
-        <div id="login-form" class="login-container">
-            <h1>Bem-vindo ao Future Style</h1>
+        <div id="login-form" class="form-container">
+            <h2>Bem-vindo ao Future Style</h2>
             <input type="email" id="email" placeholder="Digite seu email" required>
             <input type="password" id="password" placeholder="Digite sua senha" required>
             <button id="auth-button" onclick="login()">Entrar</button>
-            <button id="auth-button" onclick="createUserAccount()">Criar Conta</button>
+            <button onclick="showRegisterForm()">Criar uma conta</button>
             <p id="error-message" class="error-message"></p>
+        </div>
+        <div id="register-form" class="form-container" style="display: none;">
+            <h2>Criar uma Conta</h2>
+            <input type="email" id="new-email" placeholder="Digite seu email" required>
+            <input type="password" id="new-password" placeholder="Digite sua senha" required>
+            <button onclick="createAccount()">Criar Conta</button>
+            <button onclick="showLoginForm()">Acessar Conta Existente</button>
         </div>
         <div id="welcome-message" style="display: none;">
             <h2>Bem-vindo ao Future Style</h2>
