@@ -11,23 +11,11 @@
             color: #ffffff;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-image: url('https://img1.picmix.com/output/pic/normal/4/8/7/8/4068784_5af19.gif');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
         }
         .container {
             width: 90%;
             margin: auto;
             overflow: hidden;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
         }
         header {
             background: #333;
@@ -35,11 +23,22 @@
             padding-top: 30px;
             min-height: 70px;
             border-bottom: #77ab59 3px solid;
-            text-align: center;
         }
-        header h1 {
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        .main-header {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 24px;
+        }
+        .main-header h1 {
             margin: 0;
-            font-size: 36px;
+            font-size: 48px;
+            line-height: 1.5;
         }
         #auth-button {
             background: #77ab59;
@@ -48,67 +47,137 @@
             padding: 10px 20px;
             cursor: pointer;
         }
-        .login-form {
+        .admin-panel {
+            display: none;
             margin-top: 20px;
-            text-align: center;
         }
-        .login-form input[type="email"] {
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .login-form button {
-            padding: 10px 20px;
-            background-color: #333;
+        .footer {
+            background: #333;
             color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
         }
-        .login-form button:hover {
-            background-color: #555;
+        .customize-panel {
+            display: none;
+            margin-top: 20px;
         }
         .error-message {
             color: red;
         }
+        .login-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .login-container h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
     </style>
-</head>
-<body>
-    <header>
-        <h1>Future Style</h1>
-    </header>
-    <div class="container">
-        <div class="login-form">
-            <h2>Login ou Crie uma Conta</h2>
-            <input type="email" id="email" placeholder="Digite seu email" required>
-            <button id="auth-button" onclick="loginOrCreate()">Entrar / Criar Conta</button>
-            <p id="error-message" class="error-message"></p>
-        </div>
-    </div>
-
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
         const allowedEmails = ['thenoth23@gmail.com', 'theanonimusofc@gmail.com'];
         let attempts = 0;
         const maxAttempts = 5;
+        const users = {
+            'thenoth23@gmail.com': 'senha123',
+            'theanonimusofc@gmail.com': 'senha321'
+        };
 
-        function loginOrCreate() {
+        function login() {
             const email = document.getElementById('email').value;
-            if (allowedEmails.includes(email)) {
-                // Simula o login com sucesso
-                document.getElementById('error-message').textContent = '';
-                window.location.href = 'dashboard.html'; // Redireciona para o painel principal
+            const password = document.getElementById('password').value;
+
+            if (allowedEmails.includes(email) && users[email] === password) {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('welcome-message').style.display = 'block';
+                if (email === 'thenoth23@gmail.com' || email === 'theanonimusofc@gmail.com') {
+                    document.getElementById('admin-panel').style.display = 'block';
+                }
             } else {
                 attempts++;
                 if (attempts >= maxAttempts) {
                     alert('Você excedeu o número máximo de tentativas. Tente novamente em 24 horas.');
-                    document.getElementById('email').setAttribute('disabled', true); // Desativa o campo de email após muitas tentativas
-                    document.getElementById('auth-button').setAttribute('disabled', true); // Desativa o botão após muitas tentativas
+                    document.getElementById('login-form').style.display = 'none';
                 } else {
-                    alert('Email não autorizado. Solicite permissão.');
+                    alert('Desculpe, esse e-mail não foi encontrado.');
                 }
             }
         }
+
+        function createUserAccount() {
+            const email = document.getElementById('email').value;
+            const verificationCode = generateVerificationCode();
+            sendVerificationEmail(email, verificationCode);
+            return false;
+        }
+
+        function generateVerificationCode() {
+            return Math.floor(100000 + Math.random() * 900000);
+        }
+
+        function sendVerificationEmail(email, code) {
+            Email.send({
+                SecureToken: "SeuTokenAqui",
+                To: email,
+                From: "theanonimusofc@gmail.com",
+                Subject: "Verificação de Conta - Future Style",
+                Body: `Olá,<br><br>Obrigado por se registrar no Future Style. Para concluir o processo de criação de conta, por favor, insira o código de verificação abaixo no site:<br><br><strong>${code}</strong><br><br>Se você não solicitou este código, por favor ignore este e-mail.<br><br>Atenciosamente,<br>Equipe Future Style`
+            }).then(
+                message => alert("E-mail de verificação enviado com sucesso!")
+            );
+        }
+
+        function customizeSite() {
+            const newTitle = prompt('Digite o novo título do site:');
+            if (newTitle) {
+                document.title = newTitle;
+                document.querySelector('.main-header h1').textContent = newTitle;
+            }
+        }
+
+        function toggleCustomizePanel() {
+            const panel = document.getElementById('customize-panel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function saveCustomization() {
+            alert('Customizações salvas com sucesso!');
+        }
     </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="main-header">
+                <h1>Future Style</h1>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div id="login-form" class="login-container">
+            <h1>Bem-vindo ao Future Style</h1>
+            <input type="email" id="email" placeholder="Digite seu email" required>
+            <input type="password" id="password" placeholder="Digite sua senha" required>
+            <button id="auth-button" onclick="login()">Entrar</button>
+            <button id="auth-button" onclick="createUserAccount()">Criar Conta</button>
+            <p id="error-message" class="error-message"></p>
+        </div>
+        <div id="welcome-message" style="display: none;">
+            <h2>Bem-vindo ao Future Style</h2>
+        </div>
+        <div id="admin-panel" class="admin-panel">
+            <h3>Painel de Administração</h3>
+            <button onclick="customizeSite()">Customizar Site</button>
+            <button onclick="toggleCustomizePanel()">Mostrar/Ocultar Painel de Customização</button>
+            <div id="customize-panel" class="customize-panel">
+                <h4>Painel de Customização</h4>
+                <button onclick="saveCustomization()">Salvar Customização</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Future Style. Todos os direitos reservados.</p>
+    </div>
 </body>
 </html>
