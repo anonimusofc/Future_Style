@@ -48,6 +48,17 @@
             color: red;
             margin-top: 10px;
         }
+        .create-account {
+            margin-top: 20px;
+        }
+        .create-account a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .create-account a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -57,6 +68,9 @@
         <input type="password" id="password" placeholder="Digite sua senha" required>
         <button onclick="login()">Entrar</button>
         <p id="error-message" class="error-message"></p>
+        <div class="create-account">
+            <a href="register.html">Criar uma conta</a>
+        </div>
     </div>
 
     <script>
