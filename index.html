@@ -48,44 +48,28 @@
             color: red;
             margin-top: 10px;
         }
-        .create-account {
-            margin-top: 20px;
-        }
-        .create-account a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .create-account a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Login - Future Style</h2>
         <input type="email" id="email" placeholder="Digite seu email" required>
-        <input type="password" id="password" placeholder="Digite sua senha" required>
         <button onclick="login()">Entrar</button>
         <p id="error-message" class="error-message"></p>
-        <div class="create-account">
-            <a href="register.html">Criar uma conta</a>
-        </div>
     </div>
 
     <script>
         function login() {
             const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            // Aqui você pode adicionar lógica para verificar o email e a senha
-            // Exemplo básico: se o email e a senha estiverem corretos, redirecionar para a página inicial
-            if (email === 'seuemail@example.com' && password === 'suasenha') {
+            // Aqui você pode adicionar lógica para verificar o email
+            // Exemplo básico: se o email estiver correto, redirecionar para a página inicial
+            if (email === 'seuemail@example.com') {
                 document.body.style.backgroundColor = '#f0f0f0'; // Mudança de cor de fundo para a transição
                 setTimeout(() => {
                     window.location.href = 'index-logged-in.html'; // Redireciona para a página inicial após o login
                 }, 1500); // Delay de 1.5 segundos para a transição
             } else {
-                document.getElementById('error-message').textContent = 'Email ou senha incorretos.';
+                document.getElementById('error-message').textContent = 'Email incorreto. Tente novamente.';
             }
         }
     </script>
