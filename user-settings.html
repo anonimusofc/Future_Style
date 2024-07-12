@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações de Usuário - Future Style</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .settings-container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .setting-item {
+            margin-bottom: 15px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #77ab59;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #5c8347;
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <h1>Configurações de Usuário</h1>
+        <div class="setting-item">
+            <label for="userName">Nome de Usuário:</label>
+            <input type="text" id="userName" value="Seu Nome de Usuário">
+        </div>
+        <div class="setting-item">
+            <label for="userEmail">Email:</label>
+            <input type="email" id="userEmail" value="seuemail@example.com">
+        </div>
+        <div class="setting-item">
+            <label for="changePassword">Alterar Senha:</label>
+            <input type="password" id="changePassword" placeholder="Nova Senha">
+        </div>
+        <div class="setting-item">
+            <label for="profilePicture">Foto de Perfil:</label>
+            <input type="file" id="profilePicture">
+        </div>
+        <div class="button-container">
+            <button onclick="saveSettings()">Salvar Configurações</button>
+        </div>
+    </div>
+
+    <script>
+        function saveSettings() {
+            const userName = document.getElementById('userName').value;
+            const userEmail = document.getElementById('userEmail').value;
+            const changePassword = document.getElementById('changePassword').value;
+            // Lógica para salvar as configurações do usuário comum
+
+            console.log(`Configurações de usuário salvas: 
+                Nome de Usuário - ${userName}, 
+                Email - ${userEmail}, 
+                Nova Senha - ${changePassword}`);
+            
+            alert('Configurações salvas com sucesso!');
+        }
+    </script>
+</body>
+</html>
