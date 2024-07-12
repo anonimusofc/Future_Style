@@ -34,6 +34,8 @@
             justify-content: center;
             padding: 80px 20px 20px;
             gap: 20px;
+            max-width: 1200px;
+            margin-top: 60px;
         }
         .box {
             background-color: rgba(255, 255, 255, 0.1);
@@ -43,22 +45,34 @@
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
         .box:hover {
             transform: translateY(-5px);
         }
-        .button-container {
-            margin-top: 20px;
+        .box h2 {
+            margin-bottom: 10px;
         }
-        .button-container button {
+        .box p {
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+        .button-container {
+            margin-top: auto;
+        }
+        .button-container a {
             background-color: #77ab59;
             color: #ffffff;
             border: none;
             padding: 10px 20px;
-            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
             transition: background-color 0.3s ease;
+            border-radius: 5px;
         }
-        .button-container button:hover {
+        .button-container a:hover {
             background-color: #5c8347;
         }
         .footer {
@@ -68,6 +82,7 @@
             text-align: center;
             position: fixed;
             bottom: 0;
+            z-index: 1000;
         }
     </style>
 </head>
@@ -82,7 +97,7 @@
             <h2>Notícias</h2>
             <p>Fique por dentro das últimas novidades do mundo tech.</p>
             <div class="button-container">
-                <button>Ver Notícias</button>
+                <a href="#">Ver Notícias</a>
             </div>
         </div>
 
@@ -90,7 +105,7 @@
             <h2>Jogos</h2>
             <p>Baixe e jogue os melhores jogos do momento.</p>
             <div class="button-container">
-                <button>Ver Jogos</button>
+                <a href="#">Ver Jogos</a>
             </div>
         </div>
 
@@ -98,7 +113,7 @@
             <h2>Aplicativos</h2>
             <p>Descubra aplicativos úteis para o seu dia a dia.</p>
             <div class="button-container">
-                <button>Ver Aplicativos</button>
+                <a href="#">Ver Aplicativos</a>
             </div>
         </div>
 
@@ -106,7 +121,56 @@
             <h2>Dicas de Personalização</h2>
             <p>Personalize seu dispositivo com as melhores dicas.</p>
             <div class="button-container">
-                <button>Ver Dicas</button>
+                <a href="#">Ver Dicas</a>
+            </div>
+        </div>
+
+        <!-- Novas Caixas -->
+        <div class="box">
+            <h2>Launchers para Android</h2>
+            <p>Explore os melhores launchers para personalizar sua experiência Android.</p>
+            <div class="button-container">
+                <a href="#">Baixar Launcher para Android</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h2>Launchers para iOS</h2>
+            <p>Descubra launchers que transformam a aparência do seu iPhone ou iPad.</p>
+            <div class="button-container">
+                <a href="#">Baixar Launcher para iOS</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h2>Arquivos de Jogos</h2>
+            <p>Encontre e baixe jogos incríveis para diferentes plataformas.</p>
+            <div class="button-container">
+                <a href="#">Ver Arquivos</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h2>Apps</h2>
+            <p>Explore aplicativos úteis para todas as necessidades.</p>
+            <div class="button-container">
+                <a href="#">Ver Apps</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h2>Notícias de Tecnologia</h2>
+            <p>Leia sobre as últimas inovações e tendências em tecnologia.</p>
+            <div class="button-container">
+                <a href="#">Ver Notícias</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h2>Dicas de Personalização Avançada</h2>
+            <p>Transforme seu dispositivo com dicas avançadas de personalização.</p>
+            <div class="button-container">
+                <a href="#">Ver Dicas</a>
             </div>
         </div>
 
