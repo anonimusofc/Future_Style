@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial - Future Style</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,8 +35,6 @@
             justify-content: center;
             padding: 80px 20px 20px;
             gap: 20px;
-            max-width: 1200px;
-            margin-top: 60px;
         }
         .box {
             background-color: rgba(255, 255, 255, 0.1);
@@ -45,30 +44,21 @@
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
         }
         .box:hover {
             transform: translateY(-5px);
         }
-        .box h2 {
-            margin-bottom: 10px;
-        }
-        .box p {
-            flex-grow: 1;
-            line-height: 1.6;
-        }
         .button-container {
-            margin-top: auto;
+            margin-top: 20px;
         }
         .button-container a {
+            display: inline-block;
             background-color: #77ab59;
             color: #ffffff;
             border: none;
             padding: 10px 20px;
             text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
+            cursor: pointer;
             transition: background-color 0.3s ease;
             border-radius: 5px;
         }
@@ -82,7 +72,6 @@
             text-align: center;
             position: fixed;
             bottom: 0;
-            z-index: 1000;
         }
     </style>
 </head>
@@ -92,85 +81,73 @@
     </div>
 
     <div class="content">
-        <!-- Conteúdos diversos -->
+        <!-- Box de Notícias -->
         <div class="box">
+            <i class="fas fa-newspaper fa-3x"></i>
             <h2>Notícias</h2>
             <p>Fique por dentro das últimas novidades do mundo tech.</p>
             <div class="button-container">
-                <a href="#">Ver Notícias</a>
+                <a href="news.html">Ver Notícias</a>
             </div>
         </div>
 
+        <!-- Box de Jogos -->
         <div class="box">
+            <i class="fas fa-gamepad fa-3x"></i>
             <h2>Jogos</h2>
             <p>Baixe e jogue os melhores jogos do momento.</p>
             <div class="button-container">
-                <a href="#">Ver Jogos</a>
+                <a href="games.html">Ver Jogos</a>
             </div>
         </div>
 
+        <!-- Box de Aplicativos -->
         <div class="box">
+            <i class="fas fa-mobile-alt fa-3x"></i>
             <h2>Aplicativos</h2>
             <p>Descubra aplicativos úteis para o seu dia a dia.</p>
             <div class="button-container">
-                <a href="#">Ver Aplicativos</a>
+                <a href="apps.html">Ver Aplicativos</a>
             </div>
         </div>
 
+        <!-- Box de Dicas de Personalização -->
         <div class="box">
+            <i class="fas fa-paint-brush fa-3x"></i>
             <h2>Dicas de Personalização</h2>
             <p>Personalize seu dispositivo com as melhores dicas.</p>
             <div class="button-container">
-                <a href="#">Ver Dicas</a>
+                <a href="customization-tips.html">Ver Dicas</a>
             </div>
         </div>
 
-        <!-- Novas Caixas -->
+        <!-- Box de Launchers para Android -->
         <div class="box">
+            <i class="fas fa-rocket fa-3x"></i>
             <h2>Launchers para Android</h2>
-            <p>Explore os melhores launchers para personalizar sua experiência Android.</p>
+            <p>Transforme a aparência do seu Android com novos launchers.</p>
             <div class="button-container">
-                <a href="#">Baixar Launcher para Android</a>
+                <a href="launchers-android.html">Ver Launchers</a>
             </div>
         </div>
 
+        <!-- Box de Launchers para iOS -->
         <div class="box">
+            <i class="fab fa-apple fa-3x"></i>
             <h2>Launchers para iOS</h2>
-            <p>Descubra launchers que transformam a aparência do seu iPhone ou iPad.</p>
+            <p>Personalize seu iPhone com launchers exclusivos.</p>
             <div class="button-container">
-                <a href="#">Baixar Launcher para iOS</a>
+                <a href="launchers-ios.html">Ver Launchers</a>
             </div>
         </div>
 
+        <!-- Box de Configurações para Usuários -->
         <div class="box">
-            <h2>Arquivos de Jogos</h2>
-            <p>Encontre e baixe jogos incríveis para diferentes plataformas.</p>
+            <i class="fas fa-cog fa-3x"></i>
+            <h2>Configurações</h2>
+            <p>Personalize suas configurações de usuário.</p>
             <div class="button-container">
-                <a href="#">Ver Arquivos</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <h2>Apps</h2>
-            <p>Explore aplicativos úteis para todas as necessidades.</p>
-            <div class="button-container">
-                <a href="#">Ver Apps</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <h2>Notícias de Tecnologia</h2>
-            <p>Leia sobre as últimas inovações e tendências em tecnologia.</p>
-            <div class="button-container">
-                <a href="#">Ver Notícias</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <h2>Dicas de Personalização Avançada</h2>
-            <p>Transforme seu dispositivo com dicas avançadas de personalização.</p>
-            <div class="button-container">
-                <a href="#">Ver Dicas</a>
+                <a href="user-settings.html">Configurações de Usuário</a>
             </div>
         </div>
 
