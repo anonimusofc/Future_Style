@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações de Admin - Future Style</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .settings-container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .setting-item {
+            margin-bottom: 15px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #77ab59;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #5c8347;
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <h1>Configurações de Admin</h1>
+        <div class="setting-item">
+            <label for="siteName">Nome do Site:</label>
+            <input type="text" id="siteName" value="Future Style">
+        </div>
+        <div class="setting-item">
+            <label for="siteDescription">Descrição do Site:</label>
+            <textarea id="siteDescription" rows="4" placeholder="Digite uma breve descrição do site..."></textarea>
+        </div>
+        <div class="setting-item">
+            <label for="theme">Tema:</label>
+            <select id="theme">
+                <option value="dark">Escuro</option>
+                <option value="light">Claro</option>
+                <option value="custom">Personalizado</option>
+            </select>
+        </div>
+        <div class="setting-item">
+            <label for="footerText">Texto do Rodapé:</label>
+            <input type="text" id="footerText" placeholder="Digite o texto do rodapé...">
+        </div>
+        <div class="setting-item">
+            <label for="logoUrl">URL do Logo:</label>
+            <input type="text" id="logoUrl" placeholder="Cole aqui a URL do logo...">
+        </div>
+        <div class="setting-item">
+            <label for="adminEmails">E-mails de Administradores:</label><br>
+            <input type="email" id="adminEmail1" value="thenoth23@gmail.com"><br>
+            <input type="email" id="adminEmail2" value="theanonimusofc@gmail.com">
+        </div>
+        <div class="button-container">
+            <button onclick="saveSettings()">Salvar Configurações</button>
+        </div>
+    </div>
+
+    <script>
+        function saveSettings() {
+            const siteName = document.getElementById('siteName').value;
+            const siteDescription = document.getElementById('siteDescription').value;
+            const theme = document.getElementById('theme').value;
+            const footerText = document.getElementById('footerText').value;
+            const logoUrl = document.getElementById('logoUrl').value;
+            const adminEmail1 = document.getElementById('adminEmail1').value;
+            const adminEmail2 = document.getElementById('adminEmail2').value;
+
+            console.log(`Configurações salvas: 
+                Nome do site - ${siteName}, 
+                Descrição do site - ${siteDescription}, 
+                Tema - ${theme}, 
+                Texto do rodapé - ${footerText}, 
+                URL do logo - ${logoUrl}, 
+                E-mails de administradores - ${adminEmail1}, ${adminEmail2}`);
+            
+            alert('Configurações salvas com sucesso!');
+        }
+    </script>
+</body>
+</html>
