@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Future World</title>
+    <title>Login - Future Style</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,6 +15,8 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-image: url('https://i.pinimg.com/originals/60/67/10/6067102423d691b68e990caa7652cf56.gif');
+            background-size: cover;
             transition: background-color 1.5s;
         }
         .login-container {
@@ -52,15 +54,20 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>Login - Future World</h2>
+        <h2>Bem-vindo ao Future Style</h2>
         <input type="email" id="email" placeholder="Digite seu email" required>
         <input type="password" id="password" placeholder="Digite sua senha" required>
         <button onclick="login()">Entrar</button>
         <p id="error-message" class="error-message"></p>
-        <p>Não tem uma conta? <a href="register.html">Criar uma conta</a></p>
+        <p><a href="register.html" style="color: #77ab59;">Criar uma conta</a></p>
     </div>
 
-    <script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("WftQksw_ccYL8BPHb");
+        })();
+
         function login() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
