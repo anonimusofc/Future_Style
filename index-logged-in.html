@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Future Style - Página Inicial</title>
+    <title>Future Style</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,68 +11,68 @@
             color: #ffffff;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
         }
-        .container {
-            width: 90%;
-            margin: auto;
-            padding: 20px 0;
-        }
-        header {
-            background: #333;
-            color: #fff;
+        .navbar {
+            width: 100%;
+            background-color: #1e1e1e;
             padding: 10px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .main-header h1 {
+        .navbar h1 {
             margin: 0;
-            font-size: 36px;
+            color: #77ab59;
         }
-        .section {
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            background-color: rgba(255, 255, 255, 0.1);
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        .section h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .section p {
-            line-height: 1.6;
-        }
-        .footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
+        button {
+            background-color: #77ab59;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
             margin-top: 20px;
+        }
+        button:hover {
+            background-color: #5c8347;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="main-header">
-                <h1>Future Style - Página Inicial</h1>
-            </div>
-        </div>
-    </header>
-
-    <div class="container">
-        <section class="section">
-            <h2>Bem-vindo ao Future Style!</h2>
-            <p>Esta é a página inicial do nosso site. Aqui você pode adicionar mais conteúdo personalizado.</p>
-        </section>
-
-        <section class="section">
-            <h2>Seção Adicional</h2>
-            <p>Adicione mais conteúdo relevante para os seus usuários aqui.</p>
-        </section>
+    <div class="navbar">
+        <h1>Future Style</h1>
+        <button onclick="showSettings()">Configurações</button>
+    </div>
+    <div class="content">
+        <h2>Bem-vindo ao Future Style</h2>
+        <p>Esta é a página inicial.</p>
+        <button onclick="exclusiveAccess()">Exclusivo para donos</button>
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2024 Future Style. Todos os direitos reservados.</p>
-    </footer>
+    <script>
+        function showSettings() {
+            alert('Configurações gerais do usuário.');
+        }
+
+        function exclusiveAccess() {
+            const isAdmin = confirm('Você é um administrador?');
+            if (isAdmin) {
+                alert('ACESSO LIBERADO');
+                // Redirecionar para a página de admins ou mostrar opções exclusivas
+            } else {
+                alert('ACESSO BLOQUEADO');
+            }
+        }
+    </script>
 </body>
 </html>
