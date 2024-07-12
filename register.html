@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar - Future Style</title>
+    <title>Registro - Future Style</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,28 +50,38 @@
 </head>
 <body>
     <div class="register-container">
-        <h2>Registrar - Future Style</h2>
-        <input type="email" id="email" placeholder="Digite seu email" required>
-        <input type="password" id="password" placeholder="Digite sua senha" required>
-        <input type="password" id="confirm-password" placeholder="Confirme sua senha" required>
-        <button onclick="register()">Registrar</button>
+        <h2>Registro - Future Style</h2>
+        <input type="email" id="register-email" placeholder="Digite seu email" required>
+        <button onclick="sendVerificationCode()">Enviar código</button>
         <p id="error-message" class="error-message"></p>
     </div>
 
-    <script>
-        function register() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("WftQksw_ccYL8BPHb");
+        })();
 
-            if (password !== confirmPassword) {
-                document.getElementById('error-message').textContent = 'As senhas não correspondem.';
-                return;
+        function sendVerificationCode() {
+            const email = document.getElementById('register-email').value;
+            if (email) {
+                const code = Math.floor(100000 + Math.random() * 900000).toString();
+                const templateParams = {
+                    email: email,
+                    code: code
+                };
+
+                emailjs.send('service_r0cn4ss', 'template_t6nofjr', templateParams)
+                    .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        alert('E-mail de verificação enviado com sucesso!');
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                        alert('Erro ao enviar e-mail de verificação.');
+                    });
+            } else {
+                document.getElementById('error-message').textContent = 'Por favor, digite seu email.';
             }
-
-            // Aqui você pode adicionar lógica para registrar o usuário
-            // Exemplo básico: redirecionar para a página de login após o registro
-            window.location.href = 'index.html'; // Redireciona para a página de login após o registro
         }
     </script>
 </body>
