@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo - Future Style</title>
+    <title>Página Inicial - Future Style</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,49 +13,108 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
         }
-        .welcome-container {
+        .header {
+            background-color: #333;
+            width: 100%;
+            padding: 10px 0;
             text-align: center;
-            max-width: 400px;
-            padding: 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 80px 20px 20px;
+            gap: 20px;
+        }
+        .box {
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
         }
-        h1 {
-            margin-bottom: 20px;
+        .box:hover {
+            transform: translateY(-5px);
         }
-        .menu {
-            list-style: none;
-            padding: 0;
+        .button-container {
+            margin-top: 20px;
         }
-        .menu li {
-            margin: 10px 0;
-        }
-        .menu a {
-            color: #77ab59;
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid #77ab59;
-            border-radius: 4px;
-        }
-        .menu a:hover {
+        .button-container button {
             background-color: #77ab59;
             color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button-container button:hover {
+            background-color: #5c8347;
+        }
+        .footer {
+            background-color: #333;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
-    <div class="welcome-container">
-        <h1>Bem-vindo à Future Style</h1>
-        <ul class="menu">
-            <li><a href="#">Configurações</a></li>
-            <li><a href="#">Perfil</a></li>
-            <li><a href="#">Exclusivo para Donos</a></li>
-        </ul>
+    <div class="header">
+        <h1>Bem-vindo ao Future Style!</h1>
+    </div>
+
+    <div class="content">
+        <!-- Conteúdos diversos -->
+        <div class="box">
+            <h2>Notícias</h2>
+            <p>Fique por dentro das últimas novidades do mundo tech.</p>
+            <div class="button-container">
+                <button>Ver Notícias</button>
+            </div>
+        </div>
+
+        <div class="box">
+            <h2>Jogos</h2>
+            <p>Baixe e jogue os melhores jogos do momento.</p>
+            <div class="button-container">
+                <button>Ver Jogos</button>
+            </div>
+        </div>
+
+        <div class="box">
+            <h2>Aplicativos</h2>
+            <p>Descubra aplicativos úteis para o seu dia a dia.</p>
+            <div class="button-container">
+                <button>Ver Aplicativos</button>
+            </div>
+        </div>
+
+        <div class="box">
+            <h2>Dicas de Personalização</h2>
+            <p>Personalize seu dispositivo com as melhores dicas.</p>
+            <div class="button-container">
+                <button>Ver Dicas</button>
+            </div>
+        </div>
+
+        <!-- Adicione mais boxes conforme necessário -->
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Future Style. Todos os direitos reservados.</p>
     </div>
 </body>
 </html>
