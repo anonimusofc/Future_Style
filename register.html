@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Future Style</title>
+    <title>Registrar - Future Style</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,39 +50,41 @@
 </head>
 <body>
     <div class="register-container">
-        <h2>Registro - Future Style</h2>
+        <h2>Registrar - Future Style</h2>
         <input type="email" id="register-email" placeholder="Digite seu email" required>
-        <button onclick="sendVerificationCode()">Enviar código</button>
-        <p id="error-message" class="error-message"></p>
+        <button onclick="register()">Enviar código</button>
+        <p id="register-error-message" class="error-message"></p>
     </div>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init("WftQksw_ccYL8BPHb");
-        })();
-
-        function sendVerificationCode() {
+    <script>
+        function register() {
             const email = document.getElementById('register-email').value;
             if (email) {
-                const code = Math.floor(100000 + Math.random() * 900000).toString();
-                const templateParams = {
-                    email: email,
-                    code: code
-                };
-
-                emailjs.send('service_r0cn4ss', 'template_t6nofjr', templateParams)
-                    .then(function(response) {
-                        console.log('SUCCESS!', response.status, response.text);
-                        alert('E-mail de verificação enviado com sucesso!');
-                    }, function(error) {
-                        console.log('FAILED...', error);
-                        alert('Erro ao enviar e-mail de verificação.');
-                    });
+                sendVerificationEmail(email);
             } else {
-                document.getElementById('error-message').textContent = 'Por favor, digite seu email.';
+                document.getElementById('register-error-message').textContent = 'Por favor, insira um email válido.';
             }
         }
+
+        function sendVerificationEmail(email) {
+            const verificationCode = Math.floor(100000 + Math.random() * 900000);
+            
+            emailjs.send("service_r0cn4ss", "template_t6nofjr", {
+                to_email: email,
+                verification_code: verificationCode
+            })
+            .then((response) => {
+                alert("E-mail de verificação enviado com sucesso!");
+            }, (error) => {
+                alert("Erro ao enviar e-mail de verificação: " + error.text);
+            });
+        }
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("WftQksw_ccYL8BPHb");
+       })();
     </script>
 </body>
 </html>
