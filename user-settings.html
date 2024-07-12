@@ -10,24 +10,15 @@
             background-color: #121212;
             color: #ffffff;
             margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .settings-container {
-            max-width: 800px;
             padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
             background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(-50px); }
-            100% { opacity: 1; transform: translateY(0); }
         }
         h1 {
             text-align: center;
@@ -51,27 +42,47 @@
         button:hover {
             background-color: #5c8347;
         }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <div class="settings-container">
+    <div class="container">
         <h1>Configurações de Usuário</h1>
+        
+        <!-- Exemplo de configuração normal -->
         <div class="setting-item">
             <label for="userName">Nome de Usuário:</label>
             <input type="text" id="userName" value="Seu Nome de Usuário">
         </div>
+
         <div class="setting-item">
-            <label for="userEmail">Email:</label>
+            <label for="userEmail">Email:</label><br>
             <input type="email" id="userEmail" value="seuemail@example.com">
         </div>
+
         <div class="setting-item">
             <label for="changePassword">Alterar Senha:</label>
             <input type="password" id="changePassword" placeholder="Nova Senha">
         </div>
+
         <div class="setting-item">
             <label for="profilePicture">Foto de Perfil:</label>
             <input type="file" id="profilePicture">
         </div>
+
+        <!-- Botão de verificação de admin -->
+        <div class="button-container">
+            <button onclick="verificarAdmin()">Verificar Admin</button>
+        </div>
+        
+        <!-- Div para mensagem de não autorizado -->
+        <div class="message" id="adminMessage"></div>
+        
+        <!-- Função para salvar configurações -->
         <div class="button-container">
             <button onclick="saveSettings()">Salvar Configurações</button>
         </div>
@@ -90,6 +101,19 @@
                 Nova Senha - ${changePassword}`);
             
             alert('Configurações salvas com sucesso!');
+        }
+
+        function verificarAdmin() {
+            // Simulação de verificação de admin (substitua pelo seu sistema real)
+            const isAdmin = false; // Exemplo: Defina como true se for um admin
+
+            if (isAdmin) {
+                // Redireciona para as configurações de admin
+                window.location.href = "admin-settings.html";
+            } else {
+                // Exibe mensagem para usuários não admin
+                document.getElementById('adminMessage').innerText = "Você não está autorizado a acessar as configurações de admin.";
+            }
         }
     </script>
 </body>
