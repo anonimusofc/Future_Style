@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial - Future Style</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,6 +28,20 @@
             margin: 0;
             font-size: 24px;
         }
+        .header .settings-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #77ab59;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .header .settings-button:hover {
+            background-color: #5c8347;
+        }
         .content {
             display: flex;
             flex-wrap: wrap;
@@ -51,18 +64,15 @@
         .button-container {
             margin-top: 20px;
         }
-        .button-container a {
-            display: inline-block;
+        .button-container button {
             background-color: #77ab59;
             color: #ffffff;
             border: none;
             padding: 10px 20px;
-            text-decoration: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            border-radius: 5px;
         }
-        .button-container a:hover {
+        .button-container button:hover {
             background-color: #5c8347;
         }
         .footer {
@@ -78,76 +88,56 @@
 <body>
     <div class="header">
         <h1>Bem-vindo ao Future Style!</h1>
+        <button class="settings-button" onclick="window.location.href='user-settings.html'">CONFIGURAÇÕES</button>
     </div>
 
     <div class="content">
-        <!-- Box de Notícias -->
+        <!-- Conteúdos diversos -->
         <div class="box">
-            <i class="fas fa-newspaper fa-3x"></i>
             <h2>Notícias</h2>
             <p>Fique por dentro das últimas novidades do mundo tech.</p>
             <div class="button-container">
-                <a href="news.html">Ver Notícias</a>
+                <button onclick="window.location.href='news.html'">Ver Notícias</button>
             </div>
         </div>
 
-        <!-- Box de Jogos -->
         <div class="box">
-            <i class="fas fa-gamepad fa-3x"></i>
             <h2>Jogos</h2>
             <p>Baixe e jogue os melhores jogos do momento.</p>
             <div class="button-container">
-                <a href="games.html">Ver Jogos</a>
+                <button onclick="window.location.href='games.html'">Ver Jogos</button>
             </div>
         </div>
 
-        <!-- Box de Aplicativos -->
         <div class="box">
-            <i class="fas fa-mobile-alt fa-3x"></i>
             <h2>Aplicativos</h2>
             <p>Descubra aplicativos úteis para o seu dia a dia.</p>
             <div class="button-container">
-                <a href="apps.html">Ver Aplicativos</a>
+                <button onclick="window.location.href='apps.html'">Ver Aplicativos</button>
             </div>
         </div>
 
-        <!-- Box de Dicas de Personalização -->
         <div class="box">
-            <i class="fas fa-paint-brush fa-3x"></i>
             <h2>Dicas de Personalização</h2>
             <p>Personalize seu dispositivo com as melhores dicas.</p>
             <div class="button-container">
-                <a href="customization-tips.html">Ver Dicas</a>
+                <button onclick="window.location.href='customization-tips.html'">Ver Dicas</button>
             </div>
         </div>
 
-        <!-- Box de Launchers para Android -->
         <div class="box">
-            <i class="fas fa-rocket fa-3x"></i>
             <h2>Launchers para Android</h2>
-            <p>Transforme a aparência do seu Android com novos launchers.</p>
+            <p>Conheça os melhores launchers para Android.</p>
             <div class="button-container">
-                <a href="launchers-android.html">Ver Launchers</a>
+                <button onclick="window.location.href='launchers-android.html'">Ver Launchers</button>
             </div>
         </div>
 
-        <!-- Box de Launchers para iOS -->
         <div class="box">
-            <i class="fab fa-apple fa-3x"></i>
             <h2>Launchers para iOS</h2>
-            <p>Personalize seu iPhone com launchers exclusivos.</p>
+            <p>Descubra os melhores launchers para iOS.</p>
             <div class="button-container">
-                <a href="launchers-ios.html">Ver Launchers</a>
-            </div>
-        </div>
-
-        <!-- Box de Configurações para Usuários -->
-        <div class="box">
-            <i class="fas fa-cog fa-3x"></i>
-            <h2>Configurações</h2>
-            <p>Personalize suas configurações de usuário.</p>
-            <div class="button-container">
-                <a href="user-settings.html">Configurações de Usuário</a>
+                <button onclick="window.location.href='launchers-ios.html'">Ver Launchers</button>
             </div>
         </div>
 
