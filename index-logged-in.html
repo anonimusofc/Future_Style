@@ -28,20 +28,6 @@
             margin: 0;
             font-size: 24px;
         }
-        .header .settings-button {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #77ab59;
-            color: #ffffff;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .header .settings-button:hover {
-            background-color: #5c8347;
-        }
         .content {
             display: flex;
             flex-wrap: wrap;
@@ -49,31 +35,20 @@
             padding: 80px 20px 20px;
             gap: 20px;
         }
-        .box {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-        .box:hover {
-            transform: translateY(-5px);
-        }
-        .button-container {
-            margin-top: 20px;
-        }
-        .button-container button {
+        .button {
             background-color: #77ab59;
             color: #ffffff;
             border: none;
-            padding: 10px 20px;
+            padding: 20px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            text-align: center;
+            width: 200px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
-        .button-container button:hover {
+        .button:hover {
             background-color: #5c8347;
+            transform: translateY(-5px);
         }
         .footer {
             background-color: #333;
@@ -83,67 +58,43 @@
             position: fixed;
             bottom: 0;
         }
+        .settings-button, .suggestion-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #77ab59;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .settings-button:hover, .suggestion-button:hover {
+            background-color: #5c8347;
+        }
+        .suggestion-button {
+            top: 60px;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Bem-vindo ao Future Style!</h1>
-        <button class="settings-button" onclick="window.location.href='user-settings.html'">CONFIGURAÇÕES</button>
     </div>
-
+    <button class="settings-button" onclick="window.location.href='user-settings.html'">Configurações</button>
+    <button class="suggestion-button" onclick="window.location.href='suggestions.html'">Enviar Sugestão</button>
     <div class="content">
-        <!-- Conteúdos diversos -->
-        <div class="box">
-            <h2>Notícias</h2>
-            <p>Fique por dentro das últimas novidades do mundo tech.</p>
-            <div class="button-container">
-                <button onclick="window.location.href='news.html'">Ver Notícias</button>
-            </div>
-        </div>
-
-        <div class="box">
-            <h2>Jogos</h2>
-            <p>Baixe e jogue os melhores jogos do momento.</p>
-            <div class="button-container">
-                <button onclick="window.location.href='games.html'">Ver Jogos</button>
-            </div>
-        </div>
-
-        <div class="box">
-            <h2>Aplicativos</h2>
-            <p>Descubra aplicativos úteis para o seu dia a dia.</p>
-            <div class="button-container">
-                <button onclick="window.location.href='apps.html'">Ver Aplicativos</button>
-            </div>
-        </div>
-
-        <div class="box">
-            <h2>Dicas de Personalização</h2>
-            <p>Personalize seu dispositivo com as melhores dicas.</p>
-            <div class="button-container">
-                <button onclick="window.location.href='customization-tips.html'">Ver Dicas</button>
-            </div>
-        </div>
-
-        <div class="box">
-            <h2>Launchers para Android</h2>
-            <p>Conheça os melhores launchers para Android.</p>
-            <div class="button-container">
-                <button onclick="window.location.href='launchers-android.html'">Ver Launchers</button>
-            </div>
-        </div>
-
-        <div class="box">
-            <h2>Launchers para iOS</h2>
-            <p>Descubra os melhores launchers para iOS.</p>
-            <div class="button-container">
-                <button onclick="window.location.href='launchers-ios.html'">Ver Launchers</button>
-            </div>
-        </div>
-
-        <!-- Adicione mais boxes conforme necessário -->
+        <button class="button" onclick="window.location.href='news.html'">Notícias</button>
+        <button class="button" onclick="window.location.href='games.html'">Jogos</button>
+        <button class="button" onclick="window.location.href='apps.html'">Aplicativos</button>
+        <button class="button" onclick="window.location.href='customization-tips.html'">Dicas de Personalização</button>
+        <button class="button" onclick="window.location.href='launchers-android.html'">Launchers Android</button>
+        <button class="button" onclick="window.location.href='launchers-ios.html'">Launchers iOS</button>
+        <button class="button" onclick="window.location.href='security.html'">Segurança</button>
+        <button class="button" onclick="window.location.href='tools.html'">Ferramentas</button>
+        <button class="button" onclick="window.location.href='tutorials.html'">Tutoriais</button>
+        <button class="button" onclick="window.location.href='tips-and-tricks.html'">Dicas e Truques</button>
     </div>
-
     <div class="footer">
         <p>&copy; 2024 Future Style. Todos os direitos reservados.</p>
     </div>
