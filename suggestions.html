@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configurações de Usuário - Future Style</title>
+    <title>Enviar Sugestão - Future Style</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,30 +11,14 @@
             color: #ffffff;
             margin: 0;
             padding: 0;
-            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        .settings-btn, .suggestions-btn {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #77ab59;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-bottom: 10px;
-        }
-        .settings-btn:hover, .suggestions-btn:hover {
-            background-color: #5c8347;
-        }
-        .suggestions-btn {
-            top: 60px;
-        }
-        .settings-container {
-            display: none;
-            max-width: 800px;
-            margin: 50px auto;
+        .suggestion-container {
+            max-width: 600px;
+            width: 100%;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
@@ -49,12 +33,19 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        .setting-item {
+        .form-group {
             margin-bottom: 15px;
         }
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 10px;
         }
         button {
             background-color: #77ab59;
@@ -67,227 +58,26 @@
         button:hover {
             background-color: #5c8347;
         }
-        input[type="text"], input[type="email"], input[type="password"], select, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            background-color: #333;
-            color: #ffffff;
-            border: 1px solid #555;
-            border-radius: 4px;
-        }
-        textarea {
-            resize: vertical;
-        }
     </style>
 </head>
 <body>
-    <button class="settings-btn" onclick="toggleSettings()">CONFIGURAÇÕES</button>
-    <button class="suggestions-btn" onclick="window.location.href='suggestions.html'">SUGESTÕES</button>
-
-    <div class="settings-container" id="settings-container">
-        <h1>Configurações de Usuário</h1>
-        <div class="setting-item">
-            <label for="userName">Nome de Usuário:</label>
-            <input type="text" id="userName" placeholder="Seu Nome de Usuário">
-        </div>
-        <div class="setting-item">
-            <label for="userEmail">Email:</label>
-            <input type="email" id="userEmail" placeholder="seuemail@example.com">
-        </div>
-        <div class="setting-item">
-            <label for="changePassword">Alterar Senha:</label>
-            <input type="password" id="changePassword" placeholder="Nova Senha">
-        </div>
-        <div class="setting-item">
-            <label for="profilePicture">Foto de Perfil:</label>
-            <input type="file" id="profilePicture">
-        </div>
-        <div class="setting-item">
-            <label for="language">Idioma:</label>
-            <select id="language">
-                <option value="pt">Português</option>
-                <option value="en">Inglês</option>
-                <option value="es">Espanhol</option>
-                <option value="fr">Francês</option>
-                <option value="de">Alemão</option>
-            </select>
-        </div>
-        <div class="setting-item">
-            <label for="theme">Tema:</label>
-            <select id="theme">
-                <option value="dark">Escuro</option>
-                <option value="light">Claro</option>
-                <option value="blue">Azul</option>
-                <option value="green">Verde</option>
-            </select>
-        </div>
-        <div class="setting-item">
-            <label for="notifications">Notificações:</label>
-            <select id="notifications">
-                <option value="all">Todas</option>
-                <option value="email">Somente Email</option>
-                <option value="push">Somente Push</option>
-                <option value="none">Nenhuma</option>
-            </select>
-        </div>
-        <div class="setting-item">
-            <label for="privacy">Privacidade da Conta:</label>
-            <select id="privacy">
-                <option value="public">Pública</option>
-                <option value="private">Privada</option>
-            </select>
-        </div>
-        <div class="setting-item">
-            <label for="emailFrequency">Frequência de Email:</label>
-            <select id="emailFrequency">
-                <option value="daily">Diário</option>
-                <option value="weekly">Semanal</option>
-                <option value="monthly">Mensal</option>
-            </select>
-        </div>
-        <div class="setting-item">
-            <label for="twoFactor">Autenticação de Dois Fatores:</label>
-            <select id="twoFactor">
-                <option value="enabled">Ativado</option>
-                <option value="disabled">Desativado</option>
-            </select>
-        </div>
-        <div class="setting-item">
-            <label for="backupEmail">Email de Backup:</label>
-            <input type="email" id="backupEmail" placeholder="emailbackup@example.com">
-        </div>
-        <div class="setting-item">
-            <label for="phoneNumber">Número de Telefone:</label>
-            <input type="text" id="phoneNumber" placeholder="(00) 00000-0000">
-        </div>
-        <div class="setting-item">
-            <label for="address">Endereço:</label>
-            <textarea id="address" rows="3" placeholder="Seu Endereço"></textarea>
-        </div>
-        <div class="setting-item">
-            <label for="birthday">Data de Nascimento:</label>
-            <input type="date" id="birthday">
-        </div>
-        <div class="setting-item">
-            <label for="gender">Gênero:</label>
-            <select id="gender">
-                <option value="male">Masculino</option>
-                <option value="female">Feminino</option>
-                <option value="prefer_not_say">Prefiro não dizer</option>
-            </select>
-        </div>
-        <div class="setting-item">
-            <label for="timeZone">Fuso Horário:</label>
-            <select id="timeZone">
-                <option value="gmt-3">GMT-3</option>
-                <option value="gmt-2">GMT-2</option>
-                <option value="gmt-1">GMT-1</option>
-                <option value="gmt0">GMT 0</option>
-                <option value="gmt+1">GMT+1</option>
-                <option value="gmt+2">GMT+2</option>
-                <option value="gmt+3">GMT+3</option>
-            </select>
-        </div>
-        <div class="setting-item">
-            <label for="currency">Moeda:</label>
-            <select id="currency">
-                <option value="brl">Real Brasileiro (BRL)</option>
-                <option value="usd">Dólar Americano (USD)</option>
-                <option value="eur">Euro (EUR)</option>
-                <option value="gbp">Libra Esterlina (GBP)</option>
-            </select>
-        </div>
-        <div class="setting-item">
-            <label for="bio">Biografia:</label>
-            <textarea id="bio" rows="4" placeholder="Escreva uma breve biografia..."></textarea>
-        </div>
-        <div class="setting-item">
-            <label for="website">Website:</label>
-            <input type="text" id="website" placeholder="https://seuwebsite.com">
-        </div>
-        <div class="setting-item">
-            <label for="socialMedia">Mídias Sociais:</label>
-            <textarea id="socialMedia" rows="3" placeholder="Links das suas mídias sociais"></textarea>
-        </div>
-        <div class="setting-item">
-            <label for="occupation">Ocupação:</label>
-            <input type="text" id="occupation" placeholder="Sua ocupação">
-        </div>
-        <div class="setting-item">
-            <label for="hobbies">Hobbies:</label>
-            <textarea id="hobbies" rows="3" placeholder="Seus hobbies"></textarea>
-        </div>
-        <div class="setting-item">
-            <label for="skills">Habilidades:</label>
-            <textarea id="skills" rows="3" placeholder="Suas habilidades"></textarea>
-        </div>
-        <div class="setting-item">
-            <label for="education">Educação:</label>
-            <textarea id="education" rows="3" placeholder="Seu histórico educacional"></textarea>
-        </div>
-        <div class="setting-item">
-            <label for="languages">Idiomas Falados:</label>
-            <textarea id="languages" rows="2" placeholder="Idiomas que você fala"></textarea>
-        </div>
-        <div class="setting-item">
-            <label for="privacySettings">Configurações de Privacidade:</label>
-            <select id="privacySettings">
-                <option value="public">Público</option>
-                <option value="friends">Amigos</option>
-                <option value="only_me">Somente eu</option>
-            </select>
-        </div>
-        <div class="setting-item">
-            <label for="emailVisibility">Visibilidade do Email:</label>
-            <select id="emailVisibility">
-                <option value="public">Público</option>
-                <option value="friends">Amigos</option>
-                <option value="only_me">Somente eu</option>
-            </select>
-        </div>
-        <div class="setting-item">
-            <label for="phoneVisibility">Visibilidade do Telefone:</label>
-            <select id="phoneVisibility">
-                <option value="public">Público</option>
-                <option value="friends">Amigos</option>
-                <option value="only_me">Somente eu</option>
-            </select>
-        </div>
-        <div class="button-container">
-            <button onclick="verifyAdmin()">Verificar Admin</button>
-            <button onclick="saveSettings()">Salvar Configurações</button>
-        </div>
+    <div class="suggestion-container">
+        <h1>Enviar Sugestão</h1>
+        <form action="process-suggestion.php" method="POST">
+            <div class="form-group">
+                <label for="userName">Nome de Usuário:</label>
+                <input type="text" id="userName" name="userName" required>
+            </div>
+            <div class="form-group">
+                <label for="userEmail">Email:</label>
+                <input type="email" id="userEmail" name="userEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="suggestion">Sugestão:</label>
+                <textarea id="suggestion" name="suggestion" rows="4" required></textarea>
+            </div>
+            <button type="submit">Enviar Sugestão</button>
+        </form>
     </div>
-
-    <script>
-        function toggleSettings() {
-            const settingsContainer = document.getElementById('settings-container');
-            settingsContainer.style.display = settingsContainer.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function verifyAdmin() {
-            const isAdmin = confirm('Você é um administrador?'); // Simulação de verificação de admin
-            if (isAdmin) {
-                window.location.href = 'admin-settings.html';
-            } else {
-                alert('Você não tem permissão para acessar as configurações de administrador.');
-            }
-        }
-
-        function saveSettings() {
-            const userName = document.getElementById('userName').value;
-            const userEmail = document.getElementById('userEmail').value;
-            const changePassword = document.getElementById('changePassword').value;
-            // Lógica para salvar as configurações do usuário comum
-
-            console.log(`Configurações de usuário salvas: 
-                Nome de Usuário - ${userName}, 
-                Email - ${userEmail}, 
-                Nova Senha - ${changePassword}`);
-            
-            alert('Configurações salvas com sucesso!');
-        }
-    </script>
 </body>
 </html>
