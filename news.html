@@ -5,51 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notícias - Future Style</title>
     <style>
-        /* Estilos CSS podem ser adicionados conforme necessário */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0b0b0b;
+            color: #eaeaea;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        h1 {
+        .header {
+            background-color: #1e1e1e;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #cc0000;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+            color: #cc0000;
+        }
+        .content {
+            padding: 100px 20px 20px;
             text-align: center;
         }
-        .article {
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
+        .footer {
+            background-color: #1e1e1e;
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            border-top: 2px solid #cc0000;
+        }
+        .back-button {
+            background-color: #cc0000;
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
             border-radius: 8px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
-        .article h2 {
-            margin-top: 0;
-        }
-        .article p {
-            line-height: 1.6;
+        .back-button:hover {
+            background-color: #a30000;
         }
     </style>
 </head>
 <body>
-    <h1>Notícias</h1>
-
-    <div class="article">
-        <h2>Lançamento do Novo iPhone 14</h2>
-        <p>A Apple anunciou hoje o lançamento do iPhone 14, trazendo novidades como uma tela OLED aprimorada e um processador ainda mais rápido.</p>
-        <p>O novo iPhone estará disponível para pré-venda a partir da próxima semana e promete ser um dos smartphones mais avançados do mercado.</p>
+    <div class="header">
+        <h1>Notícias</h1>
     </div>
-
-    <div class="article">
-        <h2>WhatsApp lança recurso de Chamadas de Vídeo e Voz no Desktop</h2>
-        <p>O WhatsApp lançou oficialmente o suporte para chamadas de vídeo e voz diretamente no aplicativo desktop para Windows e Mac.</p>
-        <p>A novidade visa facilitar a comunicação entre usuários que preferem utilizar o WhatsApp em seus computadores.</p>
+    <div class="content">
+        <p>Confira as últimas notícias e atualizações no mundo da tecnologia e estilo.</p>
+        <button class="back-button" onclick="window.location.href='index-logged-in.html'">Voltar</button>
     </div>
-
-    <div class="article">
-        <h2>Microsoft anuncia nova versão do Windows 11 com foco em produtividade</h2>
-        <p>A Microsoft revelou detalhes da próxima atualização do Windows 11, que incluirá novos recursos de produtividade e melhorias na interface do usuário.</p>
-        <p>A atualização será disponibilizada gratuitamente para todos os usuários do Windows 11 nas próximas semanas.</p>
+    <div class="footer">
+        <p>&copy; 2024 Future Style. Todos os direitos reservados.</p>
     </div>
-
 </body>
 </html>
