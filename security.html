@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança - Future Style</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .section p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #77ab59;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #5c8347;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Segurança</h1>
+        <div class="section">
+            <h2>Proteção de Dados</h2>
+            <p>Nós levamos a segurança dos seus dados a sério. Utilizamos criptografia avançada para proteger suas informações pessoais e garantir que elas permaneçam seguras.</p>
+        </div>
+        <div class="section">
+            <h2>Autenticação</h2>
+            <p>Nosso sistema de autenticação em duas etapas garante que apenas você tenha acesso à sua conta. Recomendamos habilitar esta função nas configurações de usuário.</p>
+        </div>
+        <div class="section">
+            <h2>Monitoramento de Atividades</h2>
+            <p>Nossa equipe monitora constantemente atividades suspeitas para prevenir acessos não autorizados e garantir a integridade de sua conta.</p>
+        </div>
+        <div class="section">
+            <h2>Recuperação de Conta</h2>
+            <p>Se você perder o acesso à sua conta, oferecemos um processo seguro de recuperação para garantir que você possa recuperá-la sem comprometer sua segurança.</p>
+        </div>
+        <div class="section">
+            <h2>Dicas de Segurança</h2>
+            <p>Mantenha seu software atualizado, use senhas fortes e únicas para cada serviço, e nunca compartilhe suas credenciais de login com terceiros.</p>
+        </div>
+        <div class="button-container">
+            <button onclick="window.location.href='user-settings.html'">Configurações de Segurança</button>
+        </div>
+    </div>
+</body>
+</html>
