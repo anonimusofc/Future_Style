@@ -6,54 +6,68 @@
     <title>Ferramentas - Future Style</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0b0b0b;
+            color: #eaeaea;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
+            align-items: center;
         }
-        .container {
-            max-width: 800px;
+        .header {
+            background-color: #1e1e1e;
+            width: 100%;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(-50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        h1 {
             text-align: center;
-            margin-bottom: 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #cc0000;
         }
-        .section {
-            margin-bottom: 20px;
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+            color: #cc0000;
         }
-        .section h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        .content {
+            padding: 100px 20px 20px;
+            text-align: center;
         }
-        .section p {
-            font-size: 1em;
-            line-height: 1.6;
+        .footer {
+            background-color: #1e1e1e;
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            border-top: 2px solid #cc0000;
+        }
+        .back-button {
+            background-color: #cc0000;
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .back-button:hover {
+            background-color: #a30000;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="header">
         <h1>Ferramentas</h1>
-        <div class="section">
-            <h2>Nome da Ferramenta</h2>
-            <p>Descrição da ferramenta e como ela pode ser útil para os usuários.</p>
-        </div>
-        <!-- Adicione mais seções conforme necessário -->
+    </div>
+    <div class="content">
+        <p>Descubra as ferramentas mais úteis e potentes disponíveis para você.</p>
+        <button class="back-button" onclick="window.location.href='index-logged-in.html'">Voltar</button>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Future Style. Todos os direitos reservados.</p>
     </div>
 </body>
 </html>
