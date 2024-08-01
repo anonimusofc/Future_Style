@@ -3,63 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - Future Style</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
         }
-        .login-container {
-            background: #fff;
+        .container {
+            background-color: #1e1e1e;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-        input, button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-        button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .link {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
-        .link a {
-            color: #007bff;
-            text-decoration: none;
+        h1 {
+            margin-bottom: 20px;
         }
-        .link a:hover {
-            text-decoration: underline;
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+        }
+        button {
+            background-color: #c62828;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #b71c1c;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <input type="email" id="loginEmail" placeholder="Digite seu e-mail" required>
-            <input type="password" id="loginPassword" placeholder="Digite sua senha" required>
-            <button type="submit">Entrar</button>
-        </form>
-        <div class="link">
-            <a href="signup.html">Criar Conta</a>
-        </div>
+    <div class="container">
+        <h1>Login</h1>
+        <input type="text" id="username" placeholder="Nome de Usuário" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        <button onclick="login()">Entrar</button>
+        <p><a href="signup.html">Criar Conta</a></p>
     </div>
+
+    <script>
+        function login() {
+            // Função de login (a ser implementada)
+            alert('Função de login a ser implementada!');
+        }
+    </script>
 </body>
 </html>
