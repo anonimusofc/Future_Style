@@ -4,55 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplicativos - Future Style</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0b0b0b;
+            color: #eaeaea;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        h1 {
+        .header {
+            background-color: #1e1e1e;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #cc0000;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+            color: #cc0000;
+        }
+        .content {
+            padding: 100px 20px 20px;
             text-align: center;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .footer {
+            background-color: #1e1e1e;
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            border-top: 2px solid #cc0000;
         }
-        li {
-            margin-bottom: 10px;
+        .back-button {
+            background-color: #cc0000;
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
-        a {
-            color: #77ab59;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #5c8347;
+        .back-button:hover {
+            background-color: #a30000;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1><i class="fas fa-mobile-alt"></i> Aplicativos</h1>
-    </header>
-
-    <main>
-        <section>
-            <h2>Lista de Aplicativos</h2>
-            <ul>
-                <li><a href="https://play.google.com/store/apps">Google Play Store - Aplicativos</a></li>
-                <li><a href="https://apps.apple.com/br/">App Store - Aplicativos</a></li>
-            </ul>
-        </section>
-    </main>
-
-    <footer>
+    <div class="header">
+        <h1>Aplicativos</h1>
+    </div>
+    <div class="content">
+        <p>Bem-vindo à página de Aplicativos. Aqui você encontrará todos os aplicativos recomendados e em destaque.</p>
+        <button class="back-button" onclick="window.location.href='index-logged-in.html'">Voltar</button>
+    </div>
+    <div class="footer">
         <p>&copy; 2024 Future Style. Todos os direitos reservados.</p>
-    </footer>
+    </div>
 </body>
 </html>
