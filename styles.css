@@ -1,0 +1,57 @@
+/* Global Styles */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #0d0d0d; /* Red-Black Background */
+    color: #e60012; /* Bright Red for text */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #1c1c1c; /* Darker Background for Containers */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+h1, h2 {
+    color: #e60012; /* Bright Red for headings */
+    text-shadow: 1px 1px 2px #000;
+}
+
+a {
+    color: #e60012;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff4c4c; /* Light Red on hover */
+}
+
+button {
+    background-color: #e60012;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c4000f; /* Darker Red on hover */
+}
+
+input, textarea {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 5px 0;
+}
