@@ -7,14 +7,16 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #121212;
+            background-color: #1a1a1a;
             color: #ffffff;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow-x: hidden;
         }
+
         .header {
             background-color: #333;
             width: 100%;
@@ -24,10 +26,12 @@
             top: 0;
             z-index: 1000;
         }
+
         .header h1 {
             margin: 0;
             font-size: 24px;
         }
+
         .content {
             display: flex;
             flex-wrap: wrap;
@@ -35,8 +39,9 @@
             padding: 80px 20px 20px;
             gap: 20px;
         }
+
         .button {
-            background-color: #77ab59;
+            background-color: #8B0000;
             color: #ffffff;
             border: none;
             padding: 20px;
@@ -46,10 +51,12 @@
             width: 200px;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
+
         .button:hover {
-            background-color: #5c8347;
+            background-color: #600000;
             transform: translateY(-5px);
         }
+
         .footer {
             background-color: #333;
             width: 100%;
@@ -58,22 +65,85 @@
             position: fixed;
             bottom: 0;
         }
+
         .settings-button, .suggestion-button {
             position: fixed;
             top: 10px;
             left: 10px;
-            background-color: #77ab59;
+            background-color: #8B0000;
             color: #ffffff;
             border: none;
             padding: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         .settings-button:hover, .suggestion-button:hover {
-            background-color: #5c8347;
+            background-color: #600000;
         }
+
         .suggestion-button {
             top: 60px;
+        }
+
+        /* Campo de texto da hora e data */
+        .time-container, .date-container {
+            position: fixed;
+            color: #ffffff;
+            background-color: #8B0000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .time-container {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .date-container {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        /* Barra lateral */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 60px;
+            background-color: #121212;
+            transition: width 0.3s ease;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .sidebar:hover {
+            width: 200px;
+        }
+
+        .sidebar-item {
+            width: 100%;
+            color: #ffffff;
+            padding: 15px 10px;
+            text-align: left;
+            font-size: 16px;
+            white-space: nowrap;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar-item:hover {
+            background-color: #8B0000;
+        }
+
+        .sidebar-icon {
+            font-size: 24px;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -81,8 +151,10 @@
     <div class="header">
         <h1>Bem-vindo ao Future Style!</h1>
     </div>
+
     <button class="settings-button" onclick="window.location.href='user-settings.html'">Configurações</button>
     <button class="suggestion-button" onclick="window.location.href='suggestions.html'">Enviar Sugestão</button>
+
     <div class="content">
         <button class="button" onclick="window.location.href='news.html'">Notícias</button>
         <button class="button" onclick="window.location.href='games.html'">Jogos</button>
@@ -95,8 +167,35 @@
         <button class="button" onclick="window.location.href='tutorials.html'">Tutoriais</button>
         <button class="button" onclick="window.location.href='tips-and-tricks.html'">Dicas e Truques</button>
     </div>
+
+    <!-- Campos de texto para hora e data -->
+    <div class="time-container" id="time"></div>
+    <div class="date-container" id="date"></div>
+
+    <!-- Barra lateral -->
+    <div class="sidebar">
+        <div class="sidebar-item"><span class="sidebar-icon">🏠</span> Início</div>
+        <div class="sidebar-item"><span class="sidebar-icon">📰</span> Notícias</div>
+        <div class="sidebar-item"><span class="sidebar-icon">🎮</span> Jogos</div>
+        <div class="sidebar-item"><span class="sidebar-icon">🔧</span> Ferramentas</div>
+        <div class="sidebar-item"><span class="sidebar-icon">⚙️</span> Configurações</div>
+    </div>
+
     <div class="footer">
         <p>&copy; 2024 Future Style. Todos os direitos reservados.</p>
     </div>
+
+    <script>
+        function updateTime() {
+            const timeContainer = document.getElementById('time');
+            const dateContainer = document.getElementById('date');
+            const now = new Date();
+            timeContainer.innerText = now.toLocaleTimeString();
+            dateContainer.innerText = now.toLocaleDateString();
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
 </body>
 </html>
