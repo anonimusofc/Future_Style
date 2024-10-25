@@ -6,8 +6,8 @@
     <title>Login - Future Style</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a; /* Cor de fundo escura */
             color: #ffffff;
             margin: 0;
             padding: 0;
@@ -15,52 +15,74 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-image: url('background.jpg'); /* Imagem de fundo gótica (adicionar uma imagem adequada) */
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7); /* Escurecer a imagem de fundo */
         }
         .container {
-            background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, #1f1f1f, #2c2c2c); /* Gradiente para o fundo do formulário */
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5), -10px -10px 20px rgba(255, 255, 255, 0.1);
             text-align: center;
+            backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
         }
         h1 {
             margin-bottom: 20px;
+            font-size: 2.5rem; /* Aumentar o tamanho da fonte do título */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra do texto */
         }
         input {
-            margin: 10px 0;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
+            margin: 15px 0;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 8px;
             width: 100%;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #282828; /* Fundo dos campos de entrada */
+            color: #ffffff;
+        }
+        input:focus {
+            border: 1px solid #c62828; /* Bordas em vermelho quando focado */
+            background-color: #353535; /* Cor de fundo quando focado */
+            outline: none;
         }
         button {
             background-color: #c62828;
             color: #ffffff;
             border: none;
-            padding: 10px;
-            border-radius: 4px;
+            padding: 12px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s;
+            font-size: 1.2rem;
+            width: 100%;
         }
         button:hover {
             background-color: #b71c1c;
+            transform: scale(1.05); /* Efeito de crescimento ao passar o mouse */
+        }
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        a:hover {
+            text-decoration: underline; /* Substituir por sublinhado ao passar o mouse */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Login</h1>
-        <input type="text" id="username" placeholder="Nome de Usuário" required>
-        <input type="password" id="password" placeholder="Senha" required>
-        <button onclick="login()">Entrar</button>
+        <form action="process_login.php" method="post">
+            <input type="email" id="username" name="email" placeholder="Email" required>
+            <input type="password" id="password" name="senha" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
         <p><a href="signup.html">Criar Conta</a></p>
     </div>
-
-    <script>
-        function login() {
-            // Função de login (a ser implementada)
-            alert('Função de login a ser implementada!');
-        }
-    </script>
 </body>
 </html>
