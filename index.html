@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Future Style</title>
     <style>
+        /* Reset para garantir que o dimensionamento esteja correto */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #0a0a0a; /* Cor de fundo escura */
             color: #ffffff;
             margin: 0;
@@ -15,11 +22,12 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('background.jpg'); /* Imagem de fundo gótica (adicionar uma imagem adequada) */
+            background-image: url('background.jpg'); /* Imagem de fundo gótica */
             background-size: cover;
             background-position: center;
-            filter: brightness(0.7); /* Escurecer a imagem de fundo */
+            filter: brightness(0.9); /* Aumentando o brilho da imagem de fundo para ser mais visível */
         }
+
         .container {
             background: linear-gradient(145deg, #1f1f1f, #2c2c2c); /* Gradiente para o fundo do formulário */
             border-radius: 20px;
@@ -27,12 +35,16 @@
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5), -10px -10px 20px rgba(255, 255, 255, 0.1);
             text-align: center;
             backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
+            width: 100%;
+            max-width: 400px; /* Limitar a largura do formulário */
         }
+
         h1 {
             margin-bottom: 20px;
             font-size: 2.5rem; /* Aumentar o tamanho da fonte do título */
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra do texto */
         }
+
         input {
             margin: 15px 0;
             padding: 12px;
@@ -44,11 +56,13 @@
             background-color: #282828; /* Fundo dos campos de entrada */
             color: #ffffff;
         }
+
         input:focus {
             border: 1px solid #c62828; /* Bordas em vermelho quando focado */
             background-color: #353535; /* Cor de fundo quando focado */
             outline: none;
         }
+
         button {
             background-color: #c62828;
             color: #ffffff;
@@ -60,15 +74,18 @@
             font-size: 1.2rem;
             width: 100%;
         }
+
         button:hover {
             background-color: #b71c1c;
             transform: scale(1.05); /* Efeito de crescimento ao passar o mouse */
         }
+
         a {
             color: #ffffff;
             text-decoration: none;
             font-size: 0.9rem;
         }
+
         a:hover {
             text-decoration: underline; /* Substituir por sublinhado ao passar o mouse */
         }
